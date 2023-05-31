@@ -38,9 +38,9 @@
             }}
         {{ end }}
     {{ end }}
-    {{ if in . "table" }}
-        {{ $context := print "%s" . | printf "%s%s" "<h2" }}
-        {{ $section_header = index (split (index (split $context "</h2>") 0) ">") 1 }}
+    {{ if in . "h3" }}
+        {{ $context := print "%s" . | printf "%s%s" "<h3" }}
+        {{ $section_header = index (split (index (split $context "</h3>") 0) ">") 1 }}
         {{ $section_content = $context | plainify | htmlUnescape | safeHTML | truncate 10000 }}
 
         {{ if and (ne $section_header "Further Reading") (ne $section_header "") }}
