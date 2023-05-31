@@ -17,36 +17,28 @@
         {{ $section_content = $context | plainify | htmlUnescape | safeHTML | truncate 10000 }}
 
         {{ if and (ne $section_header "Further Reading") (ne $section_header "") }}
-            {{ $full_url := print $page.Permalink "#" ($section_header | anchorize) }}
-            {{ $relpermalink := print $page.RelPermalink "#" ($section_header | anchorize) }}
-            {{ $object_id := md5 $full_url }}
-
-            {{
-                $hugo_context.Scratch.Add "algoliaindex" (
-                    dict "objectID" $object_id
-                    "title" $title
-                    "section_header" $section_header
-                    "content" $section_content
-                    "type" $page.Type
-                    "relpermalink" $relpermalink
-                    "full_url" $full_url
-                    "language" $page.Language.Lang
-                    "category" $category
-                    "subcategory" $subcategory
-                    "rank" $rank
-                )
-            }}
-        {{ end }}
-    {{ end }}
-    {{ if in . "table" }}
-        {{ $context := print "%s" . | printf "%s%s" "<h3" }}
-        {{ $section_header = index (split (index (split $context "</h3>") 0) ">") 1 }}
-        {{ $section_content = $context | plainify | htmlUnescape | safeHTML | truncate 10000 }}
-
-        {{ if and (ne $section_header "Further Reading") (ne $section_header "") }}
-            {{ $full_url := print $page.Permalink "#" ($section_header | anchorize) }}
-            {{ $relpermalink := print $page.RelPermalink "#" ($section_header | anchorize) }}
-            {{ $object_id := md5 $full_url }}
+        {{ $full_url := print $page.Permalink "#" ($section_header | anchorize) }}
+        {{ $relpermalink := print $page.RelPermalink "#" ($section_header | anchorize) }}
+        {{ $object_id := md5 $full_url }}
+            
+            {{ if in ($context | plainify | htmlUnescape | safeHTML) "table" }}
+                {{ $object_table_id := md5 (printf "%s-table" $full_url) }}
+                {{
+                    $hugo_context.Scratch.Add "algoliaindex" (
+                        dict "objectID" $object_table_id
+                        "title" $title
+                        "section_header" $section_header
+                        "content" $context
+                        "type" $page.Type
+                        "relpermalink" $relpermalink
+                        "full_url" $full_url
+                        "language" $page.Language.Lang
+                        "category" $category
+                        "subcategory" $subcategory
+                        "rank" $rank
+                    )
+                }}
+            {{ end }}
 
             {{
                 $hugo_context.Scratch.Add "algoliaindex" (
