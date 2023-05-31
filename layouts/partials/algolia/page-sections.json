@@ -23,7 +23,7 @@
             
             {{ if in ($context | plainify | htmlUnescape | safeHTML) "table" }}
                 {{ $context := print "%s" . | printf "%s%s" "<table" }}
-                {{ $table_content = $context | plainify | htmlUnescape | safeHTML | truncate 10000 }}
+                {{ $table_content := $context | plainify | htmlUnescape | safeHTML | truncate 10000 }}
                 {{ $object_table_id := md5 (printf "%s-table" $full_url) }}
                 {{
                     $hugo_context.Scratch.Add "algoliaindex" (
