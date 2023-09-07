@@ -65,7 +65,7 @@
         contents:
 
         - action: integrations
-          branch: docs6141/add-deprecation-note
+          branch: docs6141/update-new-relic-integration
           globs:
           - integration/*/*_metadata.csv
           - integration/*/manifest.json
