@@ -6348,7 +6348,7 @@ components:
           readOnly: true
           type: integer
         matching_downtimes:
-          description: A list of active downtimes that match this monitor.
+          description: A list of active v1 downtimes that match this monitor.
           items:
             $ref: '#/components/schemas/MatchingDowntime'
           type: array
@@ -6876,7 +6876,8 @@ components:
             nullable: true
             type: integer
           deprecated: true
-          description: Information about the downtime applied to the monitor.
+          description: Information about the downtime applied to the monitor. Only
+            shows v1 downtimes.
           type: object
         synthetics_check_id:
           deprecated: true
@@ -7000,18 +7001,20 @@ components:
     MonitorSearchCount:
       description: Search facets.
       items:
-        description: A facet item.
-        properties:
-          count:
-            description: The number of found monitors with the listed value.
-            format: int64
-            readOnly: true
-            type: integer
-          name:
-            description: The facet value.
-            readOnly: true
-        type: object
+        $ref: '#/components/schemas/MonitorSearchCountItem'
       type: array
+    MonitorSearchCountItem:
+      description: A facet item.
+      properties:
+        count:
+          description: The number of found monitors with the listed value.
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          description: The facet value.
+          readOnly: true
+      type: object
     MonitorSearchResponse:
       description: The response form a monitor search.
       example:
@@ -20320,6 +20323,7 @@ components:
             apm_service_catalog_read: View service catalog and service definitions.
             apm_service_catalog_write: Add, modify, and delete service catalog definitions
               when those definitions are maintained by Datadog.
+            create_webhooks: Create webhooks integrations.
             dashboards_public_share: Generate public and authenticated links to share
               dashboards or embeddable graphs externally.
             dashboards_read: View dashboards.
@@ -21118,6 +21122,21 @@ paths:
         required: false
         schema:
           type: boolean
+      - description: The maximum number of dashboards returned in the list.
+        in: query
+        name: count
+        required: false
+        schema:
+          default: 100
+          format: int64
+          type: integer
+      - description: The specific offset to use as the beginning of the returned response.
+        in: query
+        name: start
+        required: false
+        schema:
+          format: int64
+          type: integer
       responses:
         '200':
           content:
@@ -21142,6 +21161,10 @@ paths:
       tags:
       - Dashboards
       x-menu-order: 3
+      x-pagination:
+        limitParam: count
+        pageOffsetParam: start
+        resultsPath: dashboards
       x-undo:
         type: safe
     patch:
@@ -27311,6 +27334,7 @@ paths:
         name: count
         required: false
         schema:
+          default: 100
           example: 5
           format: int64
           type: integer
@@ -27396,6 +27420,10 @@ paths:
       tags:
       - Notebooks
       x-menu-order: 2
+      x-pagination:
+        limitParam: count
+        pageOffsetParam: start
+        resultsPath: data
       x-undo:
         type: safe
     post:
