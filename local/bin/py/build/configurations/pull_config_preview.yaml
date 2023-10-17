@@ -119,7 +119,7 @@
         contents:
 
         - action: integrations
-          branch: main
+          branch: docs6274/add-pingdom-doc-screenshot
           globs:
           - "*/metadata.csv"
           - "*/manifest.json"
