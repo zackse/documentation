@@ -2499,36 +2499,41 @@ main:
     parent: ci
     identifier: ci_intelligent_test_runner
     weight: 6
+  - name: How it works
+    url: continuous_integration/intelligent_test_runner/how_it_works/
+    parent: ci_intelligent_test_runner
+    identifier: ci_intelligent_test_runner_how_it_works
+    weight: 601
   - name: Setup
     url: continuous_integration/intelligent_test_runner/setup/
     parent: ci_intelligent_test_runner
     identifier: ci_intelligent_test_runner_setup
-    weight: 601
+    weight: 602
   - name: .NET
     url: continuous_integration/intelligent_test_runner/setup/dotnet/
     parent: ci_intelligent_test_runner_setup
     identifier: ci_itr_dotnet
-    weight: 601
+    weight: 603
   - name: Java
     url: continuous_integration/intelligent_test_runner/setup/java/
     parent: ci_intelligent_test_runner_setup
     identifier: ci_itr_java
-    weight: 602
+    weight: 604
   - name: JavaScript and TypeScript
     url: continuous_integration/intelligent_test_runner/setup/javascript/
     parent: ci_intelligent_test_runner_setup
     identifier: ci_itr_javascript
-    weight: 603
+    weight: 605
   - name: Python
     url: continuous_integration/intelligent_test_runner/setup/python/
     parent: ci_intelligent_test_runner_setup
     identifier: ci_itr_python
-    weight: 604
+    weight: 606
   - name: Swift
     url: continuous_integration/intelligent_test_runner/setup/swift/
     parent: ci_intelligent_test_runner_setup
     identifier: ci_itr_swift
-    weight: 605
+    weight: 607
   - name: Static Analysis
     url: continuous_integration/static_analysis/
     parent: ci
