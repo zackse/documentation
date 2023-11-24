@@ -29,7 +29,7 @@ Intelligent Test Runner leverages per-test code coverage information along with 
 
 ## How test selection works
 
-When you enable Intelligent Test Runner, you transparently start collecting per-test (or per-suite, depending on the language) code coverage that is sent to Datadog.
+When you enable Intelligent Test Runner, per-test (or per-suite, depending on the framework) code coverage is transparently collected and sent to Datadog.
 
 When starting a new test session in your CI, the Datadog instrumentation requests a list of skippable tests from the backend. It provides information about the current commit, the service that is being tested, and OS and runtime configuration. The Datadog backend uses that information to search for previous test runs that can be used as proof that, if a specific test is run, we wouldn't be gaining any value. This happens whenever a previous passed test run is found that was run on the same set of impacted and [tracked](../#tracked-files) files.
 
