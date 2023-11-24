@@ -36,7 +36,7 @@ There are several configuration mechanisms to ensure that no tests are skipped o
 - You can mark certain files in your repository as [tracked files](#tracked-files), which causes all tests to run whenever these files are changed. Dockerfiles, Makefiles and other build configuration files are good candidates for tracked files.
 - You can mark certain tests in your source as unskippable to ensure they are always run. This is a good fit for data-driven tests or tests that interact with external systems. More information in the [setup page][2].
 - If you are authoring a risky commit and you'd like to run all tests, add `ITR:NoSkip` (case insensitive) anywhere in your Git commit message.
-- You can add a list of [excluded branches](#excluded-branches), which causes Intelligent Test Runner to be disbled in those branches.
+- You can add a list of [excluded branches](#excluded-branches), which disables Intelligent Test Runner in those branches.
 
 
 ## Set up a Datadog library
