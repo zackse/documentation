@@ -14,7 +14,7 @@ further_reading:
 
 Intelligent Test Runner is Datadog's test impact analysis solution. Test impact analysis is a technique that has been getting popular in the past couple of decades, but is usually hard and time-consuming to implement. Intelligent Test Runner cuts through that complexity with a simple setup process.
 
-Test impact analysis maps each test to the set of code files in your repository that your test exercises, with the goal of reducing the time taken by the testing phase of your CI. This is achieved by analyzing the code changes you are trying to test, and skipping the tests that do not impact your code changes.
+Test impact analysis maps each test to the set of code files in your repository that your test uses. Its goal is to skip tests that are not affected by the code changes that are being introduced, in order to reduce the time taken by the testing phase of your CI.
 
 An extreme example of this would be a Pull Request that is only changing a typo on a README file. For that PR, running all tests doesn't provide much value. On the contrary, if you have any flaky tests your CI might fail and you might have to retry several times before being able to merge. This is a waste of both developer and CI time. With Intelligent Test Runner, a PR that is only changing a README file would skip all tests.
 
@@ -31,7 +31,7 @@ Intelligent Test Runner leverages per-test code coverage information along with 
 
 When you enable Intelligent Test Runner, you transparently start collecting per-test (or per-suite, depending on the language) code coverage that is sent to Datadog.
 
-When starting a new test session in your CI, the Datadog instrumentation requests a list of skippable tests from the backend. It provides information about the current commit, the service that is being tested, and OS and runtime configuration. The Datadog backend uses that information to search for previous test runs that can be used as proof that, if a specific test is run, we wouldn't be gaining any value. This happens whenever a previous passed test run is found that was run on the same set of impacted and [tracked](../#tracked-files) files.
+When starting a new test session in your CI, the Datadog instrumentation requests a list of skippable tests from the backend. It provides information about the current commit, the service that is being tested, and OS and runtime configuration. The Datadog backend uses that information to search for previous test runs that can be used as proof that, if a specific test is run, we wouldn't be gaining any value. This happens whenever a previous passed test run is found that was run on a commit that has the same version of the covered and [tracked](../#tracked-files) files.
 
 {{< img src="continuous_integration/itr_test_selection.png" alt="Intelligent Test Runner Test Selection Diagram" style="width:80%;">}}
 
