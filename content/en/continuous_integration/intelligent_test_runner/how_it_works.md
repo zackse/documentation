@@ -35,6 +35,6 @@ When starting a new test session in your CI, the Datadog instrumentation request
 
 {{< img src="continuous_integration/itr_test_selection.png" alt="Intelligent Test Runner Test Selection Diagram" style="width:80%;">}}
 
-The Datadog instrumentation then removes any skippable tests from the list that are marked unskippable in source. It then proceeds to run the tests, but directs the test framework to skip those that remain in the skippable test list.
+The Datadog library then removes tests marked as unskippable in source from the skippable tests list. It then proceeds to run the tests, but directs the test framework to skip those that remain in the skippable test list.
 
 {{< img src="continuous_integration/itr_skipped_test_run.png" alt="Intelligent Test Runner Test Selection Diagram" style="width:80%;">}}
