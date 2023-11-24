@@ -16,7 +16,7 @@ Intelligent Test Runner is Datadog's test impact analysis solution. Test impact 
 
 Test impact analysis maps each test to the set of code files in your repository that your test exercises, with the goal of reducing the time taken by the testing phase of your CI. This is achieved by analyzing the code changes you are trying to test, and skipping the tests that do not impact your code changes.
 
-An extreme example of this would be a Pull Request that is only changing a typo on a README file. For that PR, running all tests doesn't provide much value. On the contrary, if you have any flaky tests your CI might fail and you might have to retry several times before being able to merge. This is a waste of both developer and CI time. With Intelligent Test Runner, a PR that is only changing a README file would skip all tests.
+An extreme example is a Pull Request that only changes a typo on a README file. For that PR, running all tests doesn't provide much value. On the contrary, flaky tests might make your CI fail, forcing you to retry the pipeline, potentially multiple times, before merging. This is a waste of both developer and CI time. With Intelligent Test Runner, a PR changing a README file would skip all tests.
 
 ## What sets it apart
 
