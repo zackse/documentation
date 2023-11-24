@@ -68,7 +68,7 @@ If there are other branches you want to exclude, add them on the Test Service Se
 Tracked files are non-code files that can potentially affect your tests. Changes in tracked files could make your tests fail or change the code coverage of your tests. Examples of files that are good candidates to add as tracked files are:
 
 - Dockerfiles used for the CI environment
-- Files that define your dependencies (for example, `pom.xml` in Maven or `requirements.txt` in Python)
+- Files that define your dependencies (for example, `pom.xml` in Maven, `requirements.txt` in Python or `package.json` in Javascript)
 - Makefiles
 
 When you specify a set of tracked files, Intelligent Test Runner runs all tests if any of these files change.
