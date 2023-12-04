@@ -16,7 +16,7 @@ Intelligent Test Runner is Datadog's test impact analysis solution. It automatic
 
 {{< img src="continuous_integration/itr_savings.png" alt="Intelligent test runner enabled in a test session showing its time savings.">}}
 
-Intelligent Test Runner works by analyzing your test suite to determine the code each test covers, and then cross-referencing that coverage with the files impacted by a new code change. Datadog uses this information to run a selection of relevant, impacted tests, omitting the ones unaffected by the code change and reducing the overall testing duration. Find out more details about [how it works](how_it_works).
+Intelligent Test Runner works by analyzing your test suite to determine the code each test covers. It then cross-references that coverage with the files impacted by a new code change. Datadog uses this information to run a selection of relevant, impacted tests, omitting the ones unaffected by the code change and reducing the overall testing duration. Find out more details about [how it works](how_it_works).
 
 By minimizing the number of tests run per commit, Intelligent Test Runner reduces the frequency of [flaky tests][1] disrupting your pipelines. This can be particularly frustrating when the test flaking is unrelated to the code change being tested. After enabling Intelligent Test Runner for your test services, you can limit each commit to its relevant tests to ensure that flaky tests unrelated to your code change don't end up arbitrarily breaking your build.
 
